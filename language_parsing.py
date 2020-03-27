@@ -54,3 +54,19 @@ Tree.fromstring(str(sen_chunk)).pretty_print()
 #       |                   VP                           VP          
 #       |          _________|__________           _______|_______     
 # recovered/VBN The/DT painting/NN stolen/VBN last/JJ week/NN was/VBD
+
+# define verb phrase type 2 grammar
+chunk_grammar = """Chunk: {<.*>+}
+                        }<VB.>+{"""
+# create RegexpParser object
+chunk_parser = RegexpParser(chunk_grammar)
+# chunk the pos-tagged sentence in sen_pos
+sen_chunk = chunk_parser.parse(sen_pos)
+print(sen_chunk) #(S (VP The/DT painting/NN stolen/VBN) (VP last/JJ week/NN was/VBD) recovered/VBN)
+# pretty_print the chunked sentence
+Tree.fromstring(str(sen_chunk)).pretty_print()
+#                                    S                                           
+#      ______________________________|________________________________            
+#     |         |          |              Chunk                     Chunk        
+#     |         |          |          ______|________           ______|______     
+# stolen/VBN was/VBD recovered/VBN The/DT       painting/NN last/JJ       week/NN
