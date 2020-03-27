@@ -55,7 +55,7 @@ Tree.fromstring(str(sen_chunk)).pretty_print()
 #       |          _________|__________           _______|_______     
 # recovered/VBN The/DT painting/NN stolen/VBN last/JJ week/NN was/VBD
 
-# define verb phrase type 2 grammar
+# define chunk phrase that have filtering
 chunk_grammar = """Chunk: {<.*>+}
                         }<VB.>+{"""
 # create RegexpParser object
